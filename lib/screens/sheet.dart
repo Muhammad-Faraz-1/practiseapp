@@ -8,6 +8,7 @@ import 'package:sign_up_page_2/screens/update_sheet.dart';
 import 'package:sign_up_page_2/statemaneger/Provider.dart';
 import 'package:sign_up_page_2/widgets/date_pick.dart';
 import 'package:sign_up_page_2/widgets/table.dart';
+import 'package:sign_up_page_2/widgets/tabled.dart';
 
 class Sheet extends StatefulWidget {
   Sheet({
@@ -215,12 +216,21 @@ class _SheetState extends State<Sheet> {
                     SizedBox(
                       height: 10.h,
                     ),
-                    Container(
+                   Container(
                       height: 250.h,
-                      width: double.infinity,
+                      // width: double.infinity,
                       child: Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 20),
-                        child: Table1(),
+                        child: SingleChildScrollView(
+                          child: Column(
+                            children: [
+                              TableDataContainer22(no: '1', dueAt: '300hrs/6Months',),
+                              TableDataContainer22(no: '2', dueAt: '200hrs/6Months',),
+                              TableDataContainer22(no: '3', dueAt: '00hrs/6Months',),
+                              TableDataContainer22(no: '4', dueAt: '3500hrs/6Months',)
+                            ],
+                          ),
+                        ),
                       ),
                     ),
                     Row(
@@ -502,10 +512,19 @@ class _SheetState extends State<Sheet> {
                     ),
                     Container(
                       height: 250.h,
-                      width: double.infinity,
+                      // width: double.infinity,
                       child: Padding(
                         padding: const EdgeInsets.symmetric(horizontal: 20),
-                        child: Tablelandsacpe(),
+                        child: SingleChildScrollView(
+                          child: Column(
+                            children: [
+                              TableDataContainer2(no: '1', dueAt: '300hrs/6Months',),
+                              TableDataContainer2(no: '2', dueAt: '200hrs/6Months',),
+                              TableDataContainer2(no: '3', dueAt: '00hrs/6Months',),
+                              TableDataContainer2(no: '4', dueAt: '3500hrs/6Months',)
+                            ],
+                          ),
+                        ),
                       ),
                     ),
                     Row(

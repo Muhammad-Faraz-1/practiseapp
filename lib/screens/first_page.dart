@@ -1,9 +1,13 @@
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
+import 'package:provider/provider.dart';
 import 'package:sign_up_page_2/multi.dart';
 import 'package:sign_up_page_2/screens/fill_out_inspection.dart';
 import 'package:sign_up_page_2/screens/history_sheet.dart';
+import 'package:sign_up_page_2/screens/login_screen.dart';
 import 'package:sign_up_page_2/screens/user_account.dart';
+import 'package:sign_up_page_2/statemaneger/Provider.dart';
 import 'package:sign_up_page_2/widgets/shadow_text.dart';
 
 class FirstPage extends StatelessWidget {
@@ -11,6 +15,7 @@ class FirstPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final Provider11 = Provider.of<Provider1>(context);
     return SafeArea(
         child: MediaQuery.of(context).orientation == Orientation.portrait
             ? Container(
@@ -59,7 +64,9 @@ class FirstPage extends StatelessWidget {
                               style: TextStyle(color: Colors.white),
                             ),
                             onTap: () {
-                              Navigator.pop(context);
+                              Provider11.LogOut();
+                              Navigator.push(
+                context, MaterialPageRoute(builder: (context) => LoginPage()));
                             },
                           ),
                         ],
@@ -292,12 +299,13 @@ class FirstPage extends StatelessWidget {
                             Row(
                               children: [
                                 Container(
-                                  
                                   height: 250.h,
                                   color: Colors.transparent,
                                   child: Column(
-                                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
+                                    crossAxisAlignment:
+                                        CrossAxisAlignment.start,
                                     children: [
                                       Padding(
                                         padding: EdgeInsets.only(top: 50),
@@ -315,7 +323,6 @@ class FirstPage extends StatelessWidget {
                                               weight: FontWeight.w400,
                                               shadowColor: Color.fromARGB(
                                                   255, 255, 255, 255)),
-                                                  
                                         ]),
                                       )
                                     ],
@@ -334,7 +341,6 @@ class FirstPage extends StatelessWidget {
                                         children: [
                                           Container(
                                             height: 60.h,
-                                            
                                             decoration: BoxDecoration(
                                                 borderRadius:
                                                     BorderRadius.circular(10),
@@ -383,7 +389,6 @@ class FirstPage extends StatelessWidget {
                                           ),
                                           Container(
                                             height: 60.h,
-                                           
                                             decoration: BoxDecoration(
                                                 borderRadius:
                                                     BorderRadius.circular(10),

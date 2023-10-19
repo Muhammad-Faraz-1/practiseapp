@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:sign_up_page_2/statemaneger/Provider.dart';
+import 'package:sign_up_page_2/widgets/loader.dart';
 import 'package:sign_up_page_2/widgets/shadow_text.dart';
 
 class LoginPage extends StatelessWidget {
@@ -141,10 +142,10 @@ class LoginPage extends StatelessWidget {
                                         fontSize: 15),
                                   ),
                                 ),
-                                Container(
+                              Provider11.loginState==false?    Container(
                                   height: 50.h,
                                   width: 150.w,
-                                  child: ElevatedButton(
+                                  child:ElevatedButton(
                                     onPressed: () {
                                       // Provider11.signInWithEmailPassword(email, password,  context);
                                       print("working");
@@ -167,7 +168,9 @@ class LoginPage extends StatelessWidget {
                                             //to set border radius to button
                                             borderRadius:
                                                 BorderRadius.circular(10))),
-                                    child: const Text(
+                                    child:
+                                    
+                                     const Text(
                                       'LOG IN',
                                       style: TextStyle(
                                         fontSize: 20,
@@ -175,8 +178,8 @@ class LoginPage extends StatelessWidget {
                                         color: Color.fromARGB(255, 4, 17, 65),
                                       ),
                                     ),
-                                  ),
-                                ),
+                                  )
+                                ):Loader(),
                               ]),
                         )
                       ],

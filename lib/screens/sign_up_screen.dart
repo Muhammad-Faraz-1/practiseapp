@@ -2,10 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
 import 'package:sign_up_page_2/multi.dart';
-import 'package:sign_up_page_2/screens/first_page.dart';
-import 'package:sign_up_page_2/screens/login_screen.dart';
 import 'package:sign_up_page_2/statemaneger/Provider.dart';
-import 'package:sign_up_page_2/widgets/popup.dart';
+import 'package:sign_up_page_2/widgets/loader.dart';
 import 'package:sign_up_page_2/widgets/shadow_text.dart';
 
 class SignUpPage extends StatefulWidget {
@@ -39,9 +37,12 @@ class _SignUpPageState extends State<SignUpPage> {
   final password = TextEditingController();
 
   final userName = TextEditingController();
+  final contact = TextEditingController();
 
   final army = TextEditingController();
-  final _formKey =  GlobalKey<FormState>();
+  final firstName = TextEditingController();
+  final lastName = TextEditingController();
+  final _formKey = GlobalKey<FormState>();
   @override
   Widget build(BuildContext context) {
     final Provider11 = Provider.of<Provider1>(context);
@@ -83,6 +84,96 @@ class _SignUpPageState extends State<SignUpPage> {
                                     shadowColor: Colors.white)
                               ]),
                         ),
+                        SizedBox(
+                          height: 10.h,
+                        ),
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Container(
+                              width: 150.w,
+                              child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceEvenly,
+                                  children: [
+                                    Multi(
+                                        color: Colors.white,
+                                        subtitle: 'First Name',
+                                        weight: FontWeight.w500,
+                                        size: 15),
+                                    SizedBox(
+                                      height: 5.h,
+                                    ),
+                                    TextFormField(
+                                      controller: firstName,
+                                      validator: (value) => value!.isEmpty
+                                          ? 'First name cannot be blank'
+                                          : null,
+                                      style: TextStyle(
+                                          color: Colors.white, fontSize: 15),
+                                      decoration: InputDecoration(
+                                        enabledBorder: const OutlineInputBorder(
+                                          borderSide:
+                                              BorderSide(color: Colors.white),
+                                        ),
+                                        focusedBorder: const OutlineInputBorder(
+                                            borderSide: BorderSide(
+                                                color: Colors.white)),
+                                        border: OutlineInputBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(10),
+                                        ),
+                                        hintText: 'Amir ',
+                                        hintStyle: const TextStyle(
+                                            color: Colors.white, fontSize: 15),
+                                      ),
+                                    ),
+                                  ]),
+                            ),
+                            Container(
+                              width: 150.w,
+                              child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceEvenly,
+                                  children: [
+                                    Multi(
+                                        color: Colors.white,
+                                        subtitle: 'Last Name',
+                                        weight: FontWeight.w500,
+                                        size: 15),
+                                        SizedBox(
+                                      height: 5.h,
+                                    ),
+                                    TextFormField(
+                                       controller: lastName,
+                                      style: TextStyle(
+                                          color: Colors.white, fontSize: 15),
+                                      decoration: InputDecoration(
+                                        enabledBorder: const OutlineInputBorder(
+                                          borderSide:
+                                              BorderSide(color: Colors.white),
+                                        ),
+                                        focusedBorder: const OutlineInputBorder(
+                                            borderSide: BorderSide(
+                                                color: Colors.white)),
+                                        border: OutlineInputBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(10),
+                                        ),
+                                        hintText: ' Hassan',
+                                        hintStyle: const TextStyle(
+                                            color: Colors.white, fontSize: 15),
+                                      ),
+                                    ),
+                                  ]),
+                            ),
+                          ],
+                        ),
+                        SizedBox(
+                          height: 10.h,
+                        ),
                         Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -92,6 +183,9 @@ class _SignUpPageState extends State<SignUpPage> {
                                   subtitle: 'User Name',
                                   weight: FontWeight.w500,
                                   size: 15),
+                                  SizedBox(
+                                      height: 5.h,
+                                    ),
                               TextFormField(
                                 controller: userName,
                                 validator: (value) => value!.isEmpty
@@ -109,25 +203,69 @@ class _SignUpPageState extends State<SignUpPage> {
                                   border: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(10),
                                   ),
-                                  hintText: 'Amir Hassan',
+                                  hintText: 'farazk12',
                                   hintStyle: const TextStyle(
                                       color: Colors.white, fontSize: 15),
                                 ),
                               ),
+                              Multi(
+                                  color: Colors.white,
+                                  subtitle:
+                                      'User name must not contain any spaces',
+                                  weight: FontWeight.normal,
+                                  size: 8)
                             ]),
+                        SizedBox(
+                          height: 10.h,
+                        ),
+                        // Column(
+                        //     crossAxisAlignment: CrossAxisAlignment.start,
+                        //     mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        //     children: [
+                        //       Multi(
+                        //           color: Colors.white,
+                        //           subtitle: 'Your Email',
+                        //           weight: FontWeight.w500,
+                        //           size: 15),
+                        //       TextFormField(
+                        //         controller: email,
+                        //         validator: (value) => value!.isEmpty
+                        //             ? 'email cannot be blank'
+                        //             : null,
+                        //         style: TextStyle(
+                        //             color: Colors.white, fontSize: 15),
+                        //         decoration: InputDecoration(
+                        //           enabledBorder: const OutlineInputBorder(
+                        //             borderSide: BorderSide(color: Colors.white),
+                        //           ),
+                        //           focusedBorder: const OutlineInputBorder(
+                        //               borderSide:
+                        //                   BorderSide(color: Colors.white)),
+                        //           border: OutlineInputBorder(
+                        //             borderRadius: BorderRadius.circular(10),
+                        //           ),
+                        //           hintText: 'abc@gmail.com',
+                        //           hintStyle:
+                        //               const TextStyle(color: Colors.white),
+                        //         ),
+                        //       ),
+                        //     ]),
                         Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                             children: [
                               Multi(
                                   color: Colors.white,
-                                  subtitle: 'Your Email',
+                                  subtitle: 'Your Phone Number',
                                   weight: FontWeight.w500,
                                   size: 15),
+                                  SizedBox(
+                                      height: 5.h,
+                                    ),
                               TextFormField(
-                                controller: email,
+                                controller: contact,
                                 validator: (value) => value!.isEmpty
-                                    ? 'email cannot be blank'
+                                    ? 'Phone Number cannot be blank'
                                     : null,
                                 style: TextStyle(
                                     color: Colors.white, fontSize: 15),
@@ -141,12 +279,15 @@ class _SignUpPageState extends State<SignUpPage> {
                                   border: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(10),
                                   ),
-                                  hintText: 'abc@gmail.com',
+                                  hintText: '+92 222 2222222',
                                   hintStyle:
                                       const TextStyle(color: Colors.white),
                                 ),
                               ),
                             ]),
+                        SizedBox(
+                          height: 10.h,
+                        ),
                         Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -156,6 +297,9 @@ class _SignUpPageState extends State<SignUpPage> {
                                   subtitle: 'Set Password',
                                   weight: FontWeight.w500,
                                   size: 15),
+                                  SizedBox(
+                                      height: 5.h,
+                                    ),
                               TextFormField(
                                 controller: password,
                                 validator: (value) => value!.isEmpty
@@ -180,6 +324,9 @@ class _SignUpPageState extends State<SignUpPage> {
                                 ),
                               ),
                             ]),
+                        SizedBox(
+                          height: 10.h,
+                        ),
                         Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -191,6 +338,9 @@ class _SignUpPageState extends State<SignUpPage> {
                                     fontSize: 15,
                                     fontWeight: FontWeight.w500),
                               ),
+                              SizedBox(
+                                      height: 5.h,
+                                    ),
                               Container(
                                 height: 50.h,
                                 decoration: BoxDecoration(
@@ -245,6 +395,9 @@ class _SignUpPageState extends State<SignUpPage> {
                                 ),
                               ),
                             ]),
+                        SizedBox(
+                          height: 10.h,
+                        ),
                         Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -254,6 +407,9 @@ class _SignUpPageState extends State<SignUpPage> {
                                   subtitle: 'Trade:',
                                   weight: FontWeight.w500,
                                   size: 15),
+                                  SizedBox(
+                                      height: 5.h,
+                                    ),
                               Container(
                                 height: 50.h,
                                 decoration: BoxDecoration(
@@ -308,6 +464,9 @@ class _SignUpPageState extends State<SignUpPage> {
                                 ),
                               ),
                             ]),
+                        SizedBox(
+                          height: 10.h,
+                        ),
                         Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
                             mainAxisAlignment: MainAxisAlignment.spaceEvenly,
@@ -317,6 +476,9 @@ class _SignUpPageState extends State<SignUpPage> {
                                   subtitle: 'Army Number:',
                                   weight: FontWeight.w500,
                                   size: 15),
+                                  SizedBox(
+                                      height: 5.h,
+                                    ),
                               TextFormField(
                                 controller: army,
                                 validator: (value) => value!.isEmpty
@@ -337,6 +499,9 @@ class _SignUpPageState extends State<SignUpPage> {
                                 ),
                               ),
                             ]),
+                        SizedBox(
+                          height: 10.h,
+                        ),
                         Container(
                           height: 230.h,
                           width: 350.w,
@@ -375,50 +540,54 @@ class _SignUpPageState extends State<SignUpPage> {
                               ),
                               Align(
                                 alignment: Alignment.bottomRight,
-                                child: Container(
-                                  height: 35.h,
-                                  width: 120.w,
-                                  child: ElevatedButton(
-                                    onPressed: () {
-                                      print("working");
-                                      if (_formKey.currentState!.validate()) {
-                                        Provider11.emailSignin(
-                                            context,
-                                            email.text,
-                                            password.text,
-                                            dropdownvalue,
-                                            dropdownvalue1,
-                                            userName.text,
-                                            army.text);
-                                        print(email.text);
-                                        print(password.text);
-                                        print(userName.text);
-                                        print(army.text);
-                                        print(dropdownvalue); 
-                                        print(dropdownvalue1);
-                                      }
-                                      
-                                    },
-                                    style: ElevatedButton.styleFrom(
-                                        backgroundColor: const Color.fromARGB(
-                                            255, 151, 174, 217),
-                                        side: BorderSide(
-                                            width: 800.w, color: Colors.black),
-                                        shape: RoundedRectangleBorder(
-                                            //to set border radius to button
-                                            borderRadius:
-                                                BorderRadius.circular(5))),
-                                    child: const Text(
-                                      'Register',
-                                      style: TextStyle(
-                                        fontSize: 20,
-                                        fontWeight: FontWeight.bold,
-                                        color:
-                                            Color.fromARGB(255, 255, 255, 255),
-                                      ),
-                                    ),
-                                  ),
-                                ),
+                                child: Provider11.loginState == false
+                                    ? Container(
+                                        height: 35.h,
+                                        width: 120.w,
+                                        child: ElevatedButton(
+                                          onPressed: () {
+                                            
+                                            if (_formKey.currentState!
+                                                .validate()) {
+                                              Provider11.emailSignin(
+                                                context,
+                                                
+                                                password.text,
+                                                dropdownvalue,
+                                                dropdownvalue1,
+                                                userName.text,
+                                                army.text,
+                                                contact.text,
+                                                firstName.text,
+                                                lastName.text,
+                                              );
+                                            }
+                                            print("working");
+                                          },
+                                          style: ElevatedButton.styleFrom(
+                                              backgroundColor:
+                                                  const Color.fromARGB(
+                                                      255, 151, 174, 217),
+                                              side: BorderSide(
+                                                  width: 800.w,
+                                                  color: Colors.black),
+                                              shape: RoundedRectangleBorder(
+                                                  //to set border radius to button
+                                                  borderRadius:
+                                                      BorderRadius.circular(
+                                                          5))),
+                                          child: const Text(
+                                            'Register',
+                                            style: TextStyle(
+                                              fontSize: 20,
+                                              fontWeight: FontWeight.bold,
+                                              color: Color.fromARGB(
+                                                  255, 255, 255, 255),
+                                            ),
+                                          ),
+                                        ),
+                                      )
+                                    : Loader(),
                               ),
                             ],
                           ),
