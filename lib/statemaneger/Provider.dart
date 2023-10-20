@@ -121,13 +121,13 @@ class Provider1 extends ChangeNotifier {
   }
 
   Future<User?> signInWithEmailPassword(
-      String email, String password, context) async {
+      String userName1, String password, context) async {
     await Firebase.initializeApp();
     User? user;
     try {
       await changeStateTrue();
       UserCredential userCredential = await _auth.signInWithEmailAndPassword(
-        email: email,
+        email:  userName1+"@gmail.com",
         password: password,
       );
       user = userCredential.user;

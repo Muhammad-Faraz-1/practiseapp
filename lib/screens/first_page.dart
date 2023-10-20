@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_screenutil/flutter_screenutil.dart';
 import 'package:provider/provider.dart';
+import 'package:restart_app/restart_app.dart';
 import 'package:sign_up_page_2/multi.dart';
 import 'package:sign_up_page_2/screens/fill_out_inspection.dart';
 import 'package:sign_up_page_2/screens/history_sheet.dart';
@@ -65,6 +66,7 @@ class FirstPage extends StatelessWidget {
                             ),
                             onTap: () {
                               Provider11.LogOut();
+                              Restart.restartApp(webOrigin: 'LoginPage()');
                               Navigator.push(
                 context, MaterialPageRoute(builder: (context) => LoginPage()));
                             },

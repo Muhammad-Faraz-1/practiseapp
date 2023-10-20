@@ -11,6 +11,7 @@ class LoginPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
       final email = TextEditingController();
+      final userName1 = TextEditingController();
   final password = TextEditingController();
   // final _formKey = GlobalKey<FormState>();
     final Provider11 = Provider.of<Provider1>(context);
@@ -88,7 +89,7 @@ class LoginPage extends StatelessWidget {
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 TextFormField(
-                                  controller: email,
+                                  controller: userName1,
                                   // validator: (value) => value!.isEmpty
                                   //     ? 'email cannot be blank'
                                   //     : null,
@@ -106,7 +107,7 @@ class LoginPage extends StatelessWidget {
                                     border: OutlineInputBorder(
                                       borderRadius: BorderRadius.circular(10),
                                     ),
-                                    hintText: 'Email',
+                                    hintText: 'User name',
                                     hintStyle: const TextStyle(
                                         color:
                                             Color.fromARGB(255, 117, 111, 111),
@@ -152,9 +153,9 @@ class LoginPage extends StatelessWidget {
                                       // if (_formKey.currentState!.validate()) {
                                       
                                       // }
-                                      if (email != null && password!= null){
+                                      if (userName1 != null && password!= null){
                                           Provider11.signInWithEmailPassword(
-                                            email.text, password.text, context);
+                                            userName1.text, password.text, context);
                                         print(email.text);
                                         print(password.text);
                                       }
