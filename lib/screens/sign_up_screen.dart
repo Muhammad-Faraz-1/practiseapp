@@ -279,7 +279,7 @@ class _SignUpPageState extends State<SignUpPage> {
                                   border: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(10),
                                   ),
-                                  hintText: '+92 222 2222222',
+                                  hintText: '0322 2222222',
                                   hintStyle:
                                       const TextStyle(color: Colors.white),
                                 ),

@@ -220,18 +220,6 @@ class FirstPage extends StatelessWidget {
                                 )
                               ],
                             ),
-                            //             Positioned(
-                            //               top: 10.h,
-                            //               left: 10.w,
-                            //               child: InkWell(
-                            //   onTap: (){
-                            //      _scaffoldKey.currentState!.openDrawer();
-                            //   },
-                            //           child: Icon(
-                            //     Icons.menu,
-                            //     color: Colors.white,
-                            //   ),
-                            // ),)
                           ],
                         ),
                       ),

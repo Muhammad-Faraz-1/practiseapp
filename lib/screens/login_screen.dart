@@ -18,7 +18,8 @@ class LoginPage extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         backgroundColor: const Color.fromARGB(255, 4, 17, 65),
-        body: CustomScrollView(
+        body: MediaQuery.of(context).orientation == Orientation.portrait
+            ?CustomScrollView(
           slivers: [
             SliverFillRemaining(
               hasScrollBody: false,
@@ -42,26 +43,18 @@ class LoginPage extends StatelessWidget {
                                   height: 120.h,
                                   width: 150.w,
                                   child: Image.asset('assets/logo.png')),
-                              //ShadowText(text:  'Inspection App', size: 25, color: Color.fromARGB(255, 255, 255, 255), weight: FontWeight.w500, shadowColor: Color.fromARGB(255, 155, 13, 23)),
+                              
                             ],
                           ),
                         ),
-                        // SizedBox(
-                        //   height: 50.h,
-                        // ),
+                        
                         Container(
                           height: 70.h,
                           width: 350.w,
                           child: Column(
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
-                              // Text(
-                              //   'Welcome to Inspection App',
-                              //   style: TextStyle(
-                              //       color: Color.fromARGB(255, 255, 255, 255),
-                              //       fontSize: 20,
-                              //       fontWeight: FontWeight.w500),
-                              // ),
+                             
                               ShadowText(
                                   text: 'Log In To Your Account',
                                   size: 25,
@@ -69,13 +62,7 @@ class LoginPage extends StatelessWidget {
                                   weight: FontWeight.w500,
                                   shadowColor:
                                       Color.fromARGB(255, 155, 13, 23)),
-                              // Text(
-                              //   'Log In To Your Account',
-                              //   style: TextStyle(
-                              //       color: Color.fromARGB(255, 255, 255, 255),
-                              //       fontSize: 20,
-                              //       fontWeight: FontWeight.w500),
-                              // ),
+                             
                             ],
                           ),
                         ),
@@ -93,6 +80,14 @@ class LoginPage extends StatelessWidget {
                                   // validator: (value) => value!.isEmpty
                                   //     ? 'email cannot be blank'
                                   //     : null,
+                                  onFieldSubmitted: (value){
+                                    if (userName1 != null && password!= null){
+                                          Provider11.signInWithEmailPassword(
+                                            userName1.text, password.text, context);
+                                        print(email.text);
+                                        print(password.text);
+                                      }
+                                  },
                                   decoration: InputDecoration(
                                     filled: true,
                                     fillColor: const Color.fromARGB(
@@ -120,6 +115,14 @@ class LoginPage extends StatelessWidget {
                                   // validator: (value) => value!.isEmpty
                                   //     ? 'password cannot be blank'
                                   //     : null,
+                                  onFieldSubmitted: (value){
+                                    if (userName1 != null && password!= null){
+                                          Provider11.signInWithEmailPassword(
+                                            userName1.text, password.text, context);
+                                        print(email.text);
+                                        print(password.text);
+                                      }
+                                  },
                                   obscureText: true,
                                   decoration: InputDecoration(
                                     filled: true,
@@ -190,7 +193,184 @@ class LoginPage extends StatelessWidget {
               ),
             )
           ],
-        ),
+        ):
+        //landscape mood
+        // landscape mood
+        CustomScrollView(
+          slivers: [
+            SliverFillRemaining(
+              hasScrollBody: false,
+              child: SingleChildScrollView(
+                child: Padding(
+                  padding: const EdgeInsets.symmetric(horizontal: 20),
+                  child: Form(
+                    // key: _formKey,
+                    child: Column(
+                      mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                      children: [
+                        SizedBox(
+                          height: 80.h,
+                        ),
+                        Container(
+                          height: 120.h,
+                          width: 250.w,
+                          child: Column(
+                            children: [
+                              Container(
+                                  height: 120.h,
+                                  width: 150.w,
+                                  child: Image.asset('assets/logo.png')),
+                              
+                            ],
+                          ),
+                        ),
+                        
+                        Container(
+                          height: 70.h,
+                          width: 350.w,
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                             
+                              ShadowText(
+                                  text: 'Log In To Your Account',
+                                  size: 25,
+                                  color: Color.fromARGB(255, 255, 255, 255),
+                                  weight: FontWeight.w500,
+                                  shadowColor:
+                                      Color.fromARGB(255, 155, 13, 23)),
+                             
+                            ],
+                          ),
+                        ),
+                        SizedBox(
+                          height: 50.h,
+                        ),
+                        Container(
+                          height: 200.h,
+                          width: 300.w,
+                          child: Column(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+                                TextFormField(
+                                  onFieldSubmitted: (value){
+                                    if (userName1 != null && password!= null){
+                                          Provider11.signInWithEmailPassword(
+                                            userName1.text, password.text, context);
+                                        print(email.text);
+                                        print(password.text);
+                                      }
+                                  },
+                                  controller: userName1,
+                                  // validator: (value) => value!.isEmpty
+                                  //     ? 'email cannot be blank'
+                                  //     : null,
+                                  decoration: InputDecoration(
+                                    filled: true,
+                                    fillColor: const Color.fromARGB(
+                                        255, 207, 220, 244),
+                                    enabledBorder: const OutlineInputBorder(
+                                      borderSide:
+                                          BorderSide(color: Colors.white),
+                                    ),
+                                    focusedBorder: const OutlineInputBorder(
+                                        borderSide:
+                                            BorderSide(color: Colors.white)),
+                                    border: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(10),
+                                    ),
+                                    hintText: 'User name',
+                                    hintStyle: const TextStyle(
+                                        color:
+                                            Color.fromARGB(255, 117, 111, 111),
+                                        fontWeight: FontWeight.w500,
+                                        fontSize: 15),
+                                  ),
+                                ),
+                                TextFormField(
+                                  controller: password,
+                                  // validator: (value) => value!.isEmpty
+                                  //     ? 'password cannot be blank'
+                                  //     : null,
+                                  onFieldSubmitted: (value){
+                                    if (userName1 != null && password!= null){
+                                          Provider11.signInWithEmailPassword(
+                                            userName1.text, password.text, context);
+                                        print(email.text);
+                                        print(password.text);
+                                      }
+                                  },
+                                  obscureText: true,
+                                  decoration: InputDecoration(
+                                    filled: true,
+                                    fillColor: const Color.fromARGB(
+                                        255, 207, 220, 244),
+                                    enabledBorder: const OutlineInputBorder(
+                                      borderSide:
+                                          BorderSide(color: Colors.white),
+                                    ),
+                                    focusedBorder: const OutlineInputBorder(
+                                        borderSide:
+                                            BorderSide(color: Colors.white)),
+                                    border: OutlineInputBorder(
+                                      borderRadius: BorderRadius.circular(10),
+                                    ),
+                                    hintText: 'PASSWORD',
+                                    hintStyle: const TextStyle(
+                                        color:
+                                            Color.fromARGB(255, 117, 111, 111),
+                                        fontWeight: FontWeight.w500,
+                                        fontSize: 15),
+                                  ),
+                                ),
+                              Provider11.loginState==false?    Container(
+                                  height: 50.h,
+                                  width: 150.w,
+                                  child:ElevatedButton(
+                                    onPressed: () {
+                                      // Provider11.signInWithEmailPassword(email, password,  context);
+                                      print("working");
+                                      // if (_formKey.currentState!.validate()) {
+                                      
+                                      // }
+                                      if (userName1 != null && password!= null){
+                                          Provider11.signInWithEmailPassword(
+                                            userName1.text, password.text, context);
+                                        print(email.text);
+                                        print(password.text);
+                                      }
+                                    },
+                                    style: ElevatedButton.styleFrom(
+                                        backgroundColor: const Color.fromARGB(
+                                            255, 207, 220, 244),
+                                        side: BorderSide(
+                                            width: 800.w, color: Colors.black),
+                                        shape: RoundedRectangleBorder(
+                                            //to set border radius to button
+                                            borderRadius:
+                                                BorderRadius.circular(10))),
+                                    child:
+                                    
+                                     const Text(
+                                      'LOG IN',
+                                      style: TextStyle(
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.bold,
+                                        color: Color.fromARGB(255, 4, 17, 65),
+                                      ),
+                                    ),
+                                  )
+                                ):Loader(),
+                              ]),
+                        )
+                      ],
+                    ),
+                  ),
+                ),
+              ),
+            )
+          ],
+        )
       ),
     );
   }

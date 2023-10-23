@@ -13,8 +13,7 @@ class Loader extends StatelessWidget {
           height: 20.h,
           width: 20.h,
           color: Colors.transparent,
-          // child: SpinKitRotatingCircle(color: const Color.fromARGB(255, 255, 10, 10))),
-        child: SpinKitSpinningLines(color: Colors.white),
+        child: const SpinKitSpinningLines(color: Colors.white),
         ),
       
     );
